@@ -58,7 +58,7 @@ const Profile = () => {
             size={160}
             rotation={0}
             width={15}
-            fill={60}
+            fill={70}
             tintColor="#00e0ff"
             onAnimationComplete={() => console.log("onAnimationComplete")}
             backgroundColor="#3d5875"
