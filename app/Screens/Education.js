@@ -3,7 +3,7 @@ import React from "react";
 
 const Education = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0 }}>
       <Text>Education</Text>
     </SafeAreaView>
   );
