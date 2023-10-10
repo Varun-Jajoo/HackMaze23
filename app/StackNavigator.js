@@ -8,6 +8,7 @@ import Profile from "./Screens/Profile";
 import You from "./Screens/You";
 import Education from "./Screens/Education";
 import Family from "./Screens/Family";
+import LoginScreen from "./Screens/Login";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -47,10 +48,10 @@ const StackNavigator = () => {
         }}
       >
         <Tab.Screen
-          name="Schemes"
+          name="Profile"
           component={Profile}
           options={{
-            tabBarLabel: "Schemes",
+            tabBarLabel: "Profile",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
               <View
@@ -83,10 +84,10 @@ const StackNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Tracker"
+          name="You"
           component={You}
           options={{
-            tabBarLabel: "Tracker",
+            tabBarLabel: "You",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
               <View
@@ -178,10 +179,10 @@ const StackNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Nutrients"
+          name="Family"
           component={Family}
           options={{
-            tabBarLabel: "Nutrients",
+            tabBarLabel: "Family",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
               <View
@@ -219,6 +220,11 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Main"
           component={BottomTabs}
