@@ -9,6 +9,8 @@ import You from "./Screens/You";
 import Education from "./Screens/Education";
 import Family from "./Screens/Family";
 import LoginScreen from "./Screens/Login";
+import Memories from "./Screens/Memories";
+import Home from "./Screens/Home";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();

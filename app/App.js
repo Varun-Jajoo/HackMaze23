@@ -6,7 +6,7 @@ import StackNavigator from "./StackNavigator";
 export const UserContext = createContext(null);
 
 export default function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <StackNavigator />

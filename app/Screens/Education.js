@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, Pressable, TouchableOpacity, Imag
 
 const Education = () => {
   return (
-    <SafeAreaView style={{ justifyContent: "center", alignItems: "center" }}>
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0,justifyContent: "center", alignItems: "center" }}>
       <ScrollView style={{display:"flex"}}>
         <View style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
       <Pressable style={styles.topCard}>
