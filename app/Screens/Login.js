@@ -9,27 +9,84 @@ import {
   Image,
   Alert,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import axios from "axios";
+import { useUserContext } from "../UserContext";
 
 const LoginScreen = () => {
+  const { setUser } = useUserContext();
   const navigation = useNavigation();
   const [selectedTab, setSelectedTab] = useState("signIn");
   const [logInEmail, setLogInEmail] = useState("");
   const [logInPassword, setLogInPassword] = useState("");
   const [email, setSignUpEmail] = useState("");
   const [password, setSignUpPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [firstName, setFirstName] = useState("");
 
-  //   const login = () => {
-  //     signInWithEmailAndPassword(auth, logInEmail, logInPassword).then(
-  //       (userCredential) => {
-  //         console.log("user credential", userCredential);
-  //         const user = userCredential.user;
-  //         console.log("user details", user);
-  //       }
-  //     );
-  //   };
+  const handleLogin = async () => {
+    let headersList = {
+      Accept: "/",
+      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+
+    let bodyContent = `email=om@gmail.com&password=1234`;
+
+    let reqOptions = {
+      url: "https://log-b.vercel.app/api/signin/",
+      method: "POST",
+      headers: headersList,
+      data: bodyContent,
+    };
+
+    try {
+      let response = await axios.request(reqOptions);
+      console.log(response.data);
+      if (response.status === 200) {
+        setUser(response.data.user.id);
+        console.log(response.data.user.id);
+        navigation.replace("Main");
+      } else {
+        console.error("Response Status Code:", response.status);
+        Alert.alert("Error user already exists");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleRegister = async () => {
+    let headersList = {
+      Accept: "/",
+      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+
+    let bodyContent = `password=${password}&email=${email}&name=${firstName}`;
+
+    let reqOptions = {
+      url: "https://log-b.vercel.app/api/signup/",
+      method: "POST",
+      headers: headersList,
+      data: bodyContent,
+    };
+
+    try {
+      let response = await axios.request(reqOptions);
+      console.log(response.data);
+      if (response.status === 200) {
+        setUser(response.data.user.id);
+        console.log(response.data.user.id);
+        navigation.replace("Main");
+      } else {
+        console.error("Response Status Code:", response.status);
+        Alert.alert("Error user already exists");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -136,9 +193,9 @@ const LoginScreen = () => {
               }}
             />
             <TextInput
-              placeholder="Phone No."
-              value={phone}
-              onChangeText={(text) => setPhone(text)}
+              placeholder="Name"
+              value={firstName}
+              onChangeText={(text) => setFirstName(text)}
               style={{
                 borderBottomColor: "lightgrey",
                 borderBottomWidth: 1,
@@ -167,8 +224,7 @@ const LoginScreen = () => {
           }}
         >
           <Pressable
-            // onPress={selectedTab === "signUp" ? handlePress : login}
-            onPress={() => navigation.replace("Main")}
+            onPress={selectedTab === "signUp" ? handleRegister : handleLogin}
             style={{
               backgroundColor: "#0080ff",
               width: 350,
