@@ -1,8 +1,40 @@
 import { StyleSheet, Text, View, SafeAreaView, Dimensions } from "react-native";
-import React from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
+import { useUserContext } from "../UserContext";
+import axios from "axios";
 
 const Profile = () => {
+  const { user, setUser } = useUserContext();
+  console.log("data" + user.id,user.data);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let headersList = {
+          Accept: "/",
+          "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+          "Content-Type": "application/x-www-form-urlencoded",
+        };
+
+        // let bodyContent = `user_id=${user}`;
+        let reqOptions = {
+          url: `https://log-b.vercel.app/api/user-data/?user_id=${user.id}`,
+          method: "GET",
+          headers: headersList,
+          // data: bodyContent,
+        };
+
+        let response = await axios.request(reqOptions);
+        console.log(response.data);
+        setUser({ ...user, data: response.data });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <SafeAreaView style={{ backgroundColor: "white" }}>
       <View

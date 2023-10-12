@@ -1,16 +1,15 @@
 import { StatusBar } from "expo-status-bar";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import StackNavigator from "./StackNavigator";
-
-export const UserContext = createContext(null);
+import { UserProvider, useUserContext } from "./UserContext";
 
 export default function App() {
-  const [user, setUser] = useState(null);
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <StackNavigator />
-    </UserContext.Provider>
+<UserProvider>
+<StackNavigator />
+</UserProvider>
+
   );
 }
 
