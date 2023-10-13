@@ -6,11 +6,11 @@ const Main = () => {
     <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0, justifyContent: "center", alignItems: "center" }}>
       <ScrollView style={{ display: "flex" }}>
         <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <ImageBackground source={require("../assets/map.png")} style={styles.topCard}>
+          <ImageBackground source={require("../../assets/map.png")} style={styles.topCard}>
             <View style={styles.overlay} />
             <View style={{ display: "flex", justifyContent: "center", alignItems: "left" }}>
               <TouchableOpacity>
-                <Text style={{ color: "white", fontWeight: "bold", fontSize: 60 }}>Nearby Parks <Image source={require("../assets/map-location_3466163.png")} style={{ width: 40, height: 40, marginVertical: 10 }} /> </Text>
+                <Text style={{ color: "white", fontWeight: "bold", fontSize: 60 }}>Nearby Parks <Image source={require("../../assets/map-location_3466163.png")} style={{ width: 40, height: 40, marginVertical: 10 }} /> </Text>
                 <Text style={{ color: "white", fontWeight: 500, fontSize: 20, marginTop: 10 }}>Discover Public Parks</Text>
                 <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>
                   Enjoy a peaceful walk amidst nature's beauty.
@@ -40,7 +40,7 @@ const Main = () => {
                   alignItems: "center"
                 }}
               >
-                <Image source={require("../assets/exercise.png")} style={{ width: 100, height: 100, marginTop: 20 }} />
+                <Image source={require("../../assets/exercise.png")} style={{ width: 100, height: 100, marginTop: 20 }} />
                 <Text style={{ color: "darkblue", marginLeft: 10, fontWeight: "600" }}>
                   Outdoor Fitness
                 </Text>
@@ -59,7 +59,7 @@ const Main = () => {
                   alignItems: "center"
                 }}
               >
-                <Image source={require("../assets/medicine.png")} style={{ width: 100, height: 100, marginVertical: 10 }} />
+                <Image source={require("../../assets/medicine.png")} style={{ width: 100, height: 100, marginVertical: 10 }} />
                 <Text style={{ color: "maroon", marginLeft: 10, fontWeight: "600" }}>
                   Health and Wellness
                 </Text>
@@ -78,7 +78,7 @@ const Main = () => {
                   alignItems: "center"
                 }}
               >
-                <Image source={require("../assets/problem.png")} style={{ width: 100, height: 100, marginVertical: 10 }} />
+                <Image source={require("../../assets/problem.png")} style={{ width: 100, height: 100, marginVertical: 10 }} />
                 <Text style={{ color: "darkgreen", fontWeight: "600" }}>
                   Problems
                 </Text>
@@ -97,7 +97,7 @@ const Main = () => {
                   alignItems: "center"
                 }}
               >
-                <Image source={require("../assets/family.png")} style={{ width: 100, height: 100, marginVertical: 10 }} />
+                <Image source={require("../../assets/family.png")} style={{ width: 100, height: 100, marginVertical: 10 }} />
                 <Text style={{ marginLeft: 10, fontWeight: "600" }}>
                   Family
                 </Text>

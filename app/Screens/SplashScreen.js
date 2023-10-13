@@ -22,7 +22,8 @@ const SplashScreen = () => {
           onPress={() => navigation.navigate("ob1")}
           style={{
             flexDirection: "row",
-            gap: 4,
+            marginTop:32,
+            gap: 10,
             justifyContent: "center",
             alignItems: "center",
           }}

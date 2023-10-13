@@ -44,7 +44,7 @@ const Memories = () => {
     const [videos, setVideos] = useState([]); // List of videos to render
     useEffect(() => {
         const dummyVideos = [Video1,Video2,Video3,Video4];
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 20; i++) {
             //pick random from 4 videos
             const randomVideoIndex = Math.floor(Math.random() * 4);
           setVideos((prev) => [...prev, dummyVideos[randomVideoIndex]]);
