@@ -13,6 +13,7 @@ import LoginScreen from "./Screens/Login";
 import SplashScreen from "./Screens/SplashScreen";
 import OnboardingOne from "./Screens/OnboardingOne";
 import OnboardingTwo from "./Screens/OnboardingTwo";
+import OnboardingFont from "./Screens/OnboardingFont";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -232,6 +233,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="ob1"
           component={OnboardingOne}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="obfont"
+          component={OnboardingFont}
           options={{ headerShown: false }}
         />
         <Stack.Screen

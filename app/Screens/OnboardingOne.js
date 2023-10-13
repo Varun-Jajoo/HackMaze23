@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Platform,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -58,11 +59,10 @@ const OnboardingOne = () => {
     setSelectedLanguage(language);
   };
 
-  const handleFontSizeSelection = (fontSize) => {
-    setSelectedFontSize(fontSize);
-    navigation.navigate("Login");
-  };
-
+ 
+  const handleNavigation = () => {
+    navigation.navigate("obfont");
+  }
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.selectLanguageContainer}>
@@ -95,10 +95,11 @@ const OnboardingOne = () => {
           </Pressable>
         ))}
       </View>
-      <View style={styles.selectLanguageContainer}>
-        <Text style={styles.selectLanguageText}>Select a Font Size</Text>
-      </View>
-      <View style={styles.shadowContainer2}>
+      
+      <View style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+  <TouchableOpacity style={{width:230,display:"flex",justifyContent:"center",alignItems:"center", marginTop:20}} onPress={handleNavigation}><Text style={{backgroundColor:"#2b8380",color:"white",padding:20,borderRadius:20,fontSize:16}}> Confirm </Text></TouchableOpacity>
+</View>
+      {/* <View style={styles.shadowContainer2}>
         {FontSizeOptions.map((item, index) => (
           <Pressable
             onPress={() => handleFontSizeSelection(item.fontSize)}
@@ -129,7 +130,7 @@ const OnboardingOne = () => {
             </View>
           </Pressable>
         ))}
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };

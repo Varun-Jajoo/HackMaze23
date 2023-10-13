@@ -1,7 +1,13 @@
 import { StyleSheet, Text, View, SafeAreaView, ScrollView ,Image, Pressable, TouchableOpacity} from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const OnboardingTwo = () => {
+  const navigation = useNavigation();
+
+  const handleNavigation = () => {
+    navigation.navigate("Login");
+  }
 
   return (
    <SafeAreaView>
@@ -22,7 +28,7 @@ const OnboardingTwo = () => {
 
 </View>
 <View style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-  <TouchableOpacity style={{width:230,display:"flex",justifyContent:"center",alignItems:"center"}}><Text style={{backgroundColor:"#2b8380",color:"white",padding:20,borderRadius:20,fontSize:16}}> Confirm </Text></TouchableOpacity>
+  <TouchableOpacity style={{width:230,display:"flex",justifyContent:"center",alignItems:"center"}} onPress={handleNavigation}><Text style={{backgroundColor:"#2b8380",color:"white",padding:20,borderRadius:20,fontSize:16}}> Confirm </Text></TouchableOpacity>
 </View>
 
 
