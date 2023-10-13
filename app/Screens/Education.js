@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "blue",
     height: "35%",
-    width: "90%",
+    width: "95%",
     padding: 30,
   },
   rockbottom: {
