@@ -6,14 +6,17 @@ import {
   Dimensions,
   Pressable,
 } from "react-native";
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { useUserContext } from "../UserContext";
 import axios from "axios";
+import { EvilIcons } from "@expo/vector-icons";
 
 const Profile = () => {
   const { user, setUser } = useUserContext();
   console.log("data" + user.id, user.data);
+  const [selectedTab, setSelectedTab] = useState(true);
+  const [recommend, setRecommend] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +27,7 @@ const Profile = () => {
           "Content-Type": "application/x-www-form-urlencoded",
         };
         let reqOptions = {
-          // url: `https://log-b.vercel.app/api/user-data/?user_id=${user.id}`,
-          url: `https://log-b.vercel.app/api/user-data/?user_id=${5}`,
+          url: `https://log-b.vercel.app/api/user-data/?user_id=${user.id}`,
           method: "GET",
           headers: headersList,
         };
@@ -38,7 +40,7 @@ const Profile = () => {
       }
     };
 
-    // fetchData();
+    fetchData();
   }, []);
   return (
     <SafeAreaView style={{ backgroundColor: "white" }}>
@@ -50,7 +52,7 @@ const Profile = () => {
       >
         <View
           style={{
-            height: "47%",
+            height: "51%",
             width: "100%",
             backgroundColor: "#b7d9e2",
             borderBottomLeftRadius: 40,
@@ -70,7 +72,7 @@ const Profile = () => {
             <View
               style={{
                 flexDirection: "row",
-                justifyContent: "center",
+                justifyContent: "space-around",
                 gap: 10,
                 borderRadius: 99,
                 backgroundColor: "white",
@@ -78,8 +80,32 @@ const Profile = () => {
                 padding: 10,
               }}
             >
-              <Text>Days</Text>
-              <Text>Week</Text>
+              <Pressable
+                onPress={() => setSelectedTab(true)}
+                style={[
+                  styles.tabButton,
+                  {
+                    borderBottomWidth: selectedTab ? 2 : 0,
+                    borderBottomColor: "#5c93aa",
+                    height: 22,
+                  },
+                ]}
+              >
+                <Text style={{ paddingBottom: 5 }}>Days</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => setSelectedTab(false)}
+                style={[
+                  styles.tabButton,
+                  {
+                    borderBottomWidth: !selectedTab ? 2 : 0,
+                    borderBottomColor: "#5c93aa",
+                    height: 22,
+                  },
+                ]}
+              >
+                <Text style={{ paddingBottom: 5 }}>Weeks</Text>
+              </Pressable>
             </View>
             <View
               style={{
@@ -87,8 +113,12 @@ const Profile = () => {
                 backgroundColor: "#5c93aa",
                 width: 40,
                 height: 40,
+                justifyContent: "center",
+                alignItems: "center",
               }}
-            ></View>
+            >
+              <EvilIcons name="location" size={30} color="#f0fcfe" />
+            </View>
           </View>
           <View
             style={{
@@ -101,12 +131,23 @@ const Profile = () => {
               size={160}
               rotation={0}
               width={15}
-              fill={70}
+              fill={37}
               tintColor="#5c93aa"
               onAnimationComplete={() => console.log("onAnimationComplete")}
               backgroundColor="#f0fcfe"
             />
           </View>
+          <Text
+            style={{
+              textAlign: "center",
+              paddingTop: 20,
+              color: "#5c93aa",
+              fontSize: 20,
+              fontWeight: 700,
+            }}
+          >
+            17% increase from yesterday
+          </Text>
         </View>
 
         <View
@@ -239,85 +280,109 @@ const Profile = () => {
           <Text style={{ fontSize: 20, fontWeight: 600 }}>
             Recommendations for you
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              paddingTop: 10,
-              gap: 10,
-            }}
-          >
-            <View
-              style={{
-                height: 50,
-                width: 50,
-                borderRadius: 10,
-                backgroundColor: "#85bcc7",
-              }}
-            ></View>
-            <View
-              style={{
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              <Text style={{ fontSize: 17, fontWeight: 700 }}>Milk</Text>
-              <Text>Rich in calcium</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              paddingTop: 10,
-              gap: 10,
-            }}
-          >
-            <View
-              style={{
-                height: 50,
-                width: 50,
-                borderRadius: 10,
-                backgroundColor: "#85bcc7",
-              }}
-            ></View>
-            <View
-              style={{
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              <Text style={{ fontSize: 17, fontWeight: 700 }}>Milk</Text>
-              <Text>Rich in calcium</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              paddingTop: 10,
-              gap: 10,
-            }}
-          >
-            <View
-              style={{
-                height: 50,
-                width: 50,
-                borderRadius: 10,
-                backgroundColor: "#85bcc7",
-              }}
-            ></View>
-            <View
-              style={{
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              <Text style={{ fontSize: 17, fontWeight: 700 }}>Milk</Text>
-              <Text>Rich in calcium</Text>
-            </View>
-          </View>
+          {recommend ? (
+            <>
+              <Pressable>
+                <Text>Recommend</Text>
+              </Pressable>
+              <Text>Click above to get AI personalized</Text>
+            </>
+          ) : (
+            <>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingTop: 10,
+                  gap: 10,
+                }}
+              >
+                <View
+                  style={{
+                    height: 50,
+                    width: 50,
+                    borderRadius: 10,
+                    backgroundColor: "#85bcc7",
+                  }}
+                ></View>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    gap: 1,
+                  }}
+                >
+                  <Text style={{ fontSize: 17, fontWeight: 700 }}>Milk</Text>
+                  <Text>Rich in calcium</Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingTop: 10,
+                  gap: 10,
+                }}
+              >
+                <View
+                  style={{
+                    height: 50,
+                    width: 50,
+                    borderRadius: 10,
+                    backgroundColor: "#85bcc7",
+                  }}
+                ></View>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    gap: 1,
+                  }}
+                >
+                  <Text style={{ fontSize: 17, fontWeight: 700 }}>Milk</Text>
+                  <Text>Rich in calcium</Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingTop: 10,
+                  gap: 10,
+                }}
+              >
+                <View
+                  style={{
+                    height: 50,
+                    width: 50,
+                    borderRadius: 10,
+                    backgroundColor: "#85bcc7",
+                  }}
+                ></View>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    gap: 1,
+                  }}
+                >
+                  <Text style={{ fontSize: 17, fontWeight: 700 }}>Milk</Text>
+                  <Text>Rich in calcium</Text>
+                </View>
+              </View>
+            </>
+          )}
         </View>
+        <Text
+          style={{
+            textAlign: "center",
+            position: "absolute",
+            top: 107,
+            right: "37.5%",
+            fontSize: 80,
+            color: "#5c93aa",
+            fontWeight: "bold",
+          }}
+        >
+          37
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -325,4 +390,8 @@ const Profile = () => {
 
 export default Profile;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  tabButton: {
+    alignItems: "center",
+  },
+});
