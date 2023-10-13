@@ -44,7 +44,7 @@ const LoginScreen = () => {
       let response = await axios.request(reqOptions);
       // console.log(response.data);
       if (response.status === 200) {
-        setUser({id: response.data.user.id,data:{} });
+        setUser({ id: response.data.user.id, data: {} });
         navigation.replace("Main");
       } else {
         console.error("Response Status Code:", response.status);
