@@ -9,6 +9,9 @@ import You from "./Screens/You";
 import Education from "./Screens/Education";
 import Family from "./Screens/Family";
 import LoginScreen from "./Screens/Login";
+import SplashScreen from "./Screens/SplashScreen";
+import OnboardingOne from "./Screens/OnboardingOne";
+import OnboardingTwo from "./Screens/OnboardingTwo";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -220,6 +223,21 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="splash"
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ob1"
+          component={OnboardingOne}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ob2"
+          component={OnboardingTwo}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
