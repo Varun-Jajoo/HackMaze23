@@ -8,9 +8,11 @@ import Profile from "./Screens/Profile";
 import You from "./Screens/You";
 import Education from "./Screens/Education";
 import Family from "./Screens/Family";
-import LoginScreen from "./Screens/Login";
 import Memories from "./Screens/Memories";
-import Home from "./Screens/Home";
+import LoginScreen from "./Screens/Login";
+import SplashScreen from "./Screens/SplashScreen";
+import OnboardingOne from "./Screens/OnboardingOne";
+import OnboardingTwo from "./Screens/OnboardingTwo";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -79,7 +81,7 @@ const StackNavigator = () => {
                     paddingTop: 7,
                   }}
                 >
-                  Schemes
+                  Profile
                 </Text>
               </View>
             ),
@@ -115,7 +117,7 @@ const StackNavigator = () => {
                     paddingTop: 7,
                   }}
                 >
-                  Tracker
+                  You
                 </Text>
               </View>
             ),
@@ -181,10 +183,10 @@ const StackNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Family"
-          component={Family}
+          name="Memories"
+          component={Memories}
           options={{
-            tabBarLabel: "Family",
+            tabBarLabel: "Memories",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
               <View
@@ -210,7 +212,7 @@ const StackNavigator = () => {
                     paddingTop: 7,
                   }}
                 >
-                  Expenses
+                  Memories
                 </Text>
               </View>
             ),
@@ -222,6 +224,21 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="splash"
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ob1"
+          component={OnboardingOne}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ob2"
+          component={OnboardingTwo}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
