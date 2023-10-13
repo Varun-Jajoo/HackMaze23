@@ -54,7 +54,7 @@ function Settings() {
       });
   };
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     getSettings();
   }, []);
   return (

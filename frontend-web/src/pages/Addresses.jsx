@@ -37,7 +37,7 @@ function Addresses() {
     setAddress(userAddressData?.data[e.target.value]);
   };
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     getAddressDetails();
   }, []);
   return (

@@ -23,6 +23,7 @@ function useLogin() {
         }
       );
       const data = response.data;
+      console.log(data)
       await AsyncStorage.setItem("user", JSON.stringify(data));
       dispatch({ type: "LOGIN", payload: data });
       setIsLoading(false);

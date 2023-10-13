@@ -1,0 +1,5 @@
+/backend-node/node_modules
+/backend-python/node_modules
+/frontend-app/node_modules
+/frontend-web/node_modules
+.env

@@ -25,7 +25,7 @@ export default function HomeScreen() {
   const route = useRoute();
   function getData() {
     const patientId = user?.userData?.patientId;
-    for (let i = 0; i < patientId.length; i++) {
+    for (let i = 0; i < patientId?.length; i++) {
       axios
         .get(`https://doctorine-node.onrender.com/user/user/`, {
           params: {
@@ -33,6 +33,7 @@ export default function HomeScreen() {
           },
         })
         .then((res) => {
+          console.log("Res"+res.data);
           setName(res.data.name);
           setRoom(res.data.bedId[0]);
           setData(res.data.data);
@@ -76,10 +77,10 @@ export default function HomeScreen() {
 
         <ScrollView>
           <Cards
-            hr={cardData.HR}
-            rr={cardData.RR}
-            bp={cardData.SBP}
-            alert={cardData.alert}
+            hr={cardData?.HR}
+            rr={cardData?.RR}
+            bp={cardData?.SBP}
+            alert={cardData?.alert}
             name={name}
             room={room}
             data={data}

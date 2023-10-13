@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const env = require("./env");
 var bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -10,12 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "https://doctorine-node.onrender.com",
-      "http://localhost:3000",
-      "https://doctorine-alpha.vercel.app",
-    ],
-
+    origin: '*',
     exposedHeaders: "token",
     credentials: true,
   })

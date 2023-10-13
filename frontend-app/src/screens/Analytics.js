@@ -9,7 +9,7 @@ import { useRoute } from "@react-navigation/native";
 const Analytics = () => {
   const route = useRoute();
   const data = route.params;
-
+  console.log(data)
   return (
     <View className="relative mt-10 py-0">
       <View className="top-36">

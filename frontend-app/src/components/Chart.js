@@ -7,6 +7,7 @@ const Chart = ({ chart, data }) => {
   const [tempData, setTempData] = useState([]);
   const [cardData, setCardData] = useState([0]);
   const [counter, setCounter] = useState(0);
+  //console.log(data)
   useEffect(() => {
     let t = [];
     if (chart === "Heart Rate") {

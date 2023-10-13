@@ -41,7 +41,7 @@ function Nurses() {
     // setAddress("");
   };
 
-  useEffect(() => {
+  React.useLayoutEffect(() => {
     const abortController = new AbortController();
     function getNurses() {
       axios

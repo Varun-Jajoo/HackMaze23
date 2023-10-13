@@ -57,7 +57,7 @@ function Doctors() {
       });
   }
 
-  useEffect(() => {
+  React.useLayoutEffect(() => {
     const abortController = new AbortController();
 
     getDoctors();

@@ -30,7 +30,10 @@ function ImageClicker() {
       })
       .then((res) => {
         const t = res.data;
-        const a = { HR: t.HR, RR: t.RR, BP: t.SBP };
+        let a={};
+        if(t.HR) a.HR = t.HR;
+        if(t.RR) a.RR = t.RR;
+        if(t.SBP) a.BP = t.SBP;
         setScanning(false);
         Alert.alert(JSON.stringify(a));
         navigation.navigate("Home");

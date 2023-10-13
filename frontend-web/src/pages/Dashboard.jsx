@@ -4,6 +4,7 @@ import ProfileHeader from "../components/ProfileHeader";
 import "./styles/Dashboard.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 import axios from "axios";
+import { useLayoutEffect } from "react";
 
 function Dashboard() {
   const [modal, setModal] = React.useState(false);
@@ -44,7 +45,7 @@ function Dashboard() {
     setPatientEmail("");
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const abortController = new AbortController();
     function getBeds() {
       axios
