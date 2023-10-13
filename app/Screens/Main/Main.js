@@ -6,8 +6,9 @@ const Main = () => {
     { id: 1, title: "Exercise", image: require("../../assets/exercise.png"), backgroundColor:"#02cfee" },
     { id: 2, title: "Medicine", image: require("../../assets/medicine.png"),backgroundColor:"#f67ea9"  },
     { id: 3, title: "Problems", image: require("../../assets/problem.png"),backgroundColor:"#53dab8"  },
-    { id: 4, title: "Exercise", image: require("../../assets/family.png"),backgroundColor:"#f0a540"  },
-    { id: 4, title: "Exercise", image: require("../../assets/family.png"),backgroundColor:"#02cfee"  },
+    { id: 4, title: "Family", image: require("../../assets/family.png"),backgroundColor:"#f0a540"  },
+    { id: 5, title: "Parks Nearby", image: require("../../assets/family.png"),backgroundColor:"#02cfee"  },
+    { id: 6, title: "Doctor", image: require("../../assets/family.png"),backgroundColor:"#02cfee"  },
   ]
   return (
     <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0, justifyContent: "center", alignItems: "center" }}>
