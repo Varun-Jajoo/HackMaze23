@@ -8,7 +8,11 @@ import Profile from "./Screens/Profile";
 import You from "./Screens/You";
 import Education from "./Screens/Education";
 import Family from "./Screens/Family";
+import Memories from "./Screens/Memories";
 import LoginScreen from "./Screens/Login";
+import SplashScreen from "./Screens/SplashScreen";
+import OnboardingOne from "./Screens/OnboardingOne";
+import OnboardingTwo from "./Screens/OnboardingTwo";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -179,10 +183,10 @@ const StackNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Family"
-          component={Family}
+          name="Memories"
+          component={Memories}
           options={{
-            tabBarLabel: "Family",
+            tabBarLabel: "Memories",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
               <View
@@ -208,7 +212,7 @@ const StackNavigator = () => {
                     paddingTop: 7,
                   }}
                 >
-                  Family
+                  Memories
                 </Text>
               </View>
             ),
@@ -220,11 +224,26 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
+          name="splash"
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ob1"
+          component={OnboardingOne}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ob2"
+          component={OnboardingTwo}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen
           name="Main"
           component={BottomTabs}

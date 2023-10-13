@@ -42,17 +42,16 @@ const LoginScreen = () => {
 
     try {
       let response = await axios.request(reqOptions);
-      console.log(response.data);
+      // console.log(response.data);
       if (response.status === 200) {
-        setUser(response.data.user.id);
-        console.log(response.data.user.id);
+        setUser({ id: response.data.user.id, data: {} });
         navigation.replace("Main");
       } else {
         console.error("Response Status Code:", response.status);
         Alert.alert("Error user already exists");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error2:", error);
     }
   };
 
