@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TouchableOpacity, Image, ScrollView, ImageBackground, Platform } from "react-native";
+import { useUserContext } from "../../UserContext";
 
 const Main = () => {
   const cardData = [
@@ -10,11 +11,15 @@ const Main = () => {
     { id: 5, title: "Parks Nearby", image: require("../../assets/family.png"),backgroundColor:"#02cfee"  },
     { id: 6, title: "Doctor", image: require("../../assets/family.png"),backgroundColor:"#02cfee"  },
   ]
+  const {user} = useUserContext();
   return (
     <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0, justifyContent: "center", alignItems: "center" }}>
       <ScrollView style={{ display: "flex" }}>
         <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <Pressable style={{width:"85%",borderRadius:20,backgroundColor:"53dab8",height:"150"}}><Text style={{fontSize:30,fontWeight:"bold",textAlign:"left",marginBottom:20,width:"100%",borderRadius:20,backgroundColor:"#53dab8",height:"150",padding:40}}>Welcome Ramesh</Text></Pressable>
+        <Text className="mt-7 ml-6 font-normal text-[32px] mb-0 py-0">
+          Welcome, {user?.data.user.first_name}
+        </Text>
+        
           {/* <ImageBackground source={require("../../assets/map.png")} style={styles.topCard}>
             <View style={styles.overlay} />
             <View style={{ display: "flex", justifyContent: "center", alignItems: "left" }}>

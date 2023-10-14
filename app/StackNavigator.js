@@ -14,6 +14,8 @@ import SplashScreen from "./Screens/SplashScreen";
 import OnboardingOne from "./Screens/OnboardingOne";
 import OnboardingTwo from "./Screens/OnboardingTwo";
 import OnboardingFont from "./Screens/OnboardingFont";
+import Main from "./Screens/Main/Main";
+import Medicines from "./Screens/Medicines";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -126,7 +128,7 @@ const StackNavigator = () => {
         />
         <Tab.Screen
           name="Education"
-          component={Education}
+          component={Main}
           options={{
             tabBarLabel: "Education",
             headerShown: false,
@@ -253,6 +255,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottomTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Med"
+          component={Medicines}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
