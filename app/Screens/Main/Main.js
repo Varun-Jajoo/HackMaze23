@@ -17,7 +17,7 @@ const Main = () => {
       <ScrollView style={{ display: "flex" }}>
         <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <Text className="mt-7 ml-6 font-normal text-[32px] mb-0 py-0">
-          Welcome, {user?.data.user.first_name}
+          Welcome, {user?.data?.user?.first_name?user?.data?.user?.first_name:"User!"}
         </Text>
         
           {/* <ImageBackground source={require("../../assets/map.png")} style={styles.topCard}>

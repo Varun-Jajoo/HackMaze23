@@ -54,78 +54,8 @@ const StackNavigator = () => {
           },
         }}
       >
-        <Tab.Screen
-          name="Profile"
-          component={Profile}
-          options={{
-            tabBarLabel: "Profile",
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-              <View
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  top: 10,
-                }}
-              >
-                <Image
-                  source={require("./assets/splash.png")}
-                  resizeMode="contain"
-                  style={{
-                    width: 27,
-                    height: 27,
-                    tintColor: focused ? "#e32f45" : "#748c94",
-                  }}
-                />
-                <Text
-                  style={{
-                    color: focused ? "#e32f45" : "#748c94",
-                    fontSize: 13,
-                    paddingTop: 7,
-                  }}
-                >
-                  Profile
-                </Text>
-              </View>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="You"
-          component={You}
-          options={{
-            tabBarLabel: "You",
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-              <View
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  top: 10,
-                }}
-              >
-                <Image
-                  source={require("./assets/splash.png")}
-                  resizeMode="contain"
-                  style={{
-                    width: 27,
-                    height: 27,
-                    tintColor: focused ? "#e32f45" : "#748c94",
-                  }}
-                />
-                <Text
-                  style={{
-                    color: focused ? "#e32f45" : "#748c94",
-                    fontSize: 13,
-                    paddingTop: 7,
-                  }}
-                >
-                  You
-                </Text>
-              </View>
-            ),
-          }}
-        />
+        
+        
         <Tab.Screen
           name="Education"
           component={Main}
@@ -150,77 +80,29 @@ const StackNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Community"
-          component={Community}
+          name="Voice"
+          component={Main}
           options={{
-            tabBarLabel: "Community",
+            tabBarLabel: "Education",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
-              <View
+              <Image
+                source={require("./assets/splash.png")}
+                resizeMode="contain"
                 style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  top: 10,
+                  width: 40,
+                  height: 40,
+                  tintColor: focused ? "white" : "white",
                 }}
-              >
-                <Image
-                  source={require("./assets/splash.png")}
-                  resizeMode="contain"
-                  style={{
-                    width: 27,
-                    height: 27,
-                    tintColor: focused ? "#e32f45" : "#748c94",
-                  }}
-                />
-                <Text
-                  style={{
-                    color: focused ? "#e32f45" : "#748c94",
-                    fontSize: 13,
-                    paddingTop: 7,
-                  }}
-                >
-                  Community
-                </Text>
-              </View>
+              />
+            ),
+            tabBarButton: (props) => (
+              // Return the CustomTabBarButton component
+              <CustomTabBarButton {...props} />
             ),
           }}
         />
-        <Tab.Screen
-          name="Memories"
-          component={Memories}
-          options={{
-            tabBarLabel: "Memories",
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-              <View
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  top: 10,
-                }}
-              >
-                <Image
-                  source={require("./assets/splash.png")}
-                  resizeMode="contain"
-                  style={{
-                    width: 27,
-                    height: 27,
-                    tintColor: focused ? "#e32f45" : "#748c94",
-                  }}
-                />
-                <Text
-                  style={{
-                    color: focused ? "#e32f45" : "#748c94",
-                    fontSize: 13,
-                    paddingTop: 7,
-                  }}
-                >
-                  Memories
-                </Text>
-              </View>
-            ),
-          }}
-        />
+        
       </Tab.Navigator>
     );
   };
