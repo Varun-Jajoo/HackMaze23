@@ -80,61 +80,33 @@ function App() {
             <Route
               path="/manageadmins"
               element={
-                role === "superadmin" ? (
-                  <ManageAdmin />
-                ) : user ? (
-                  <HMPPrograms />
-                ) : (
-                  <Login />
-                )
+                user ? 
+                  <ManageAdmin />:<Login />
               }
             ></Route>
             <Route
               path="/managecourses"
-              element={
-                role === "admin" || role === "superadmin" ? (
-                  <ManageCourses />
-                ) : role === "healthpartner" ? (
-                  <ManageAppointments />
-                ) : user ? (
-                  <Dashboard />
-                ) : (
-                  <Login />
-                )
-              }
+              element={user?<ManageCourses />: <Login />}
             ></Route>
             <Route
               path="/managemessages"
-              element={
-                role === "admin" || role === "superadmin" ? (
-                  <ManageMessages />
-                ) : user ? (
-                  <Dashboard />
-                ) : (
-                  <Login />
-                )
-              }
+              element={user?<ManageMessages />:<Login />}
             ></Route>
             <Route
               path="/managedoctors"
               element={
-                role === "admin" || role === "superadmin" ? (
+                user?
                   <ManageDoctor />
-                ) : user ? (
-                  <Dashboard />
-                ) : (
+                : 
                   <Login />
-                )
               }
             ></Route>
             <Route
               path="/addcourse"
               element={
-                role === "admin" || role === "superadmin" ? (
+                user ? 
                   <AddCourses />
-                ) : user ? (
-                  <Dashboard />
-                ) : (
+                 : (
                   <Login />
                 )
               }
@@ -142,10 +114,8 @@ function App() {
             <Route
               path="/editcourse"
               element={
-                role === "admin" || role === "superadmin" ? (
+                user ? (
                   <EditCourses />
-                ) : user ? (
-                  <Dashboard />
                 ) : (
                   <Login />
                 )
@@ -154,10 +124,8 @@ function App() {
             <Route
               path="/manageappointments"
               element={
-                role === "healthpartner" ? (
+                  user ? (
                   <ManageAppointments />
-                ) : user ? (
-                  <Dashboard />
                 ) : (
                   <Login />
                 )
@@ -166,10 +134,8 @@ function App() {
             <Route
               path="/editprofile"
               element={
-                role === "healthpartner" ? (
+                user ? (
                   <EditHealthPartner />
-                ) : user ? (
-                  <Dashboard />
                 ) : (
                   <Login />
                 )
@@ -178,10 +144,8 @@ function App() {
             <Route
               path="/viewdoctorappointments"
               element={
-                role === "healthpartner" ? (
+               user ? (
                   <DoctorAppointments />
-                ) : user ? (
-                  <Dashboard />
                 ) : (
                   <Login />
                 )
