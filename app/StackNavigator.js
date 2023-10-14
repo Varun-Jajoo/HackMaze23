@@ -161,6 +161,11 @@ const StackNavigator = () => {
           component={Maps}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="memories"
+          component={Memories}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

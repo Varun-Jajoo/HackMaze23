@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TextInput, Image, ScrollView, SafeAreaView } from "react-native";
+import Header from "../components/Header";
 
 const Education = () => {
   const [searchText, setSearchText] = useState("");
@@ -14,14 +15,15 @@ const Education = () => {
   ];
 
   return (
-    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0 }}>
-      <View style={[styles.container, {backgroundColor:"white"}]}>
-        <TextInput
+    <>
+      <Header />
+      <View style={styles.container}>
+        {/* <TextInput
           style={styles.searchInput}
           placeholder="Search..."
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
-        />
+        /> */}
         <ScrollView style={styles.viewsContainer}>
           <View style={styles.row}>
             {viewsData.map((view) => (
@@ -33,7 +35,7 @@ const Education = () => {
           </View>
         </ScrollView>
       </View>
-    </SafeAreaView>
+    </>
   );
 };
 
@@ -43,7 +45,8 @@ const styles = StyleSheet.create({
   container: {
    display:"flex",
    justifyContent:"center",
-   alignItems:"center"
+   alignItems:"center",
+   marginTop:20
   },
   searchInput: {
     marginVertical:"10%",

@@ -8,7 +8,7 @@ export default function Maps() {
   return (
    
       <WebView
-    source={{ uri: `https://www.google.com/maps/search/parks+near+me/@${location?.coords?.latitude},${location?.coords.longitude},12z?entry=ttu` }}
+    source={{ uri: `https://www.google.com/maps/search/parks+near+me/@${location?.coords?.latitude},${location?.coords?.longitude},12z?entry=ttu` }}
     style={{marginTop:40}}
   />
     

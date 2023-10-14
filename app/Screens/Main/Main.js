@@ -8,6 +8,7 @@ import { useLocationContext } from "../../LocationContext";
 const Main = () => {
   const {setLocation, location} = useLocationContext();
   const [errorMsg, setErrorMsg] = useState(null);
+  console.log(location)
   useEffect(() => {
     (async () => {
       
@@ -23,11 +24,11 @@ const Main = () => {
   }, []);
   const cardData = [
     { id: 1, title: "Exercise", image: require("../../assets/exercise.png"), backgroundColor:"#02cfee",to:''},
-    { id: 2, title: "Medicine", image: require("../../assets/medicine.png"),backgroundColor:"#f67ea9",to:''  },
+    { id: 2, title: "Medicine", image: require("../../assets/medicine.png"),backgroundColor:"#f67ea9",to:'Med'  },
     { id: 3, title: "Problems", image: require("../../assets/problem.png"),backgroundColor:"#53dab8",to:'problems'  },
     { id: 4, title: "Family", image: require("../../assets/family.png"),backgroundColor:"#f0a540",to:'family'  },
-    { id: 5, title: "Parks Nearby", image: require("../../assets/family.png"),backgroundColor:"#02cfee",to:'Map'  },
-    { id: 6, title: "Doctor", image: require("../../assets/family.png"),backgroundColor:"#02cfee",to:''  },
+    { id: 5, title: "Parks Nearby", image: require("../../assets/forest.png"),backgroundColor:"#02cfee",to:'Map'  },
+    { id: 6, title: "Doctor", image: require("../../assets/doctor.png"),backgroundColor:"#02cfee",to:''  },
   ]
   const navigation = useNavigation();
 

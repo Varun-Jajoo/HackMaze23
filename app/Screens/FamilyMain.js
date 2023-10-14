@@ -1,9 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Pressable } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+import Header from "../components/Header";
+
 
 export default function FamilyMain() {
+  const navigation = useNavigation();
   return (
-    <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <>
+    <Header />
+    <View style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop:10, paddingHorizontal:20 }}>
       <ImageBackground source={require("../assets/fam.png")} style={styles.topCard}>
         <View style={styles.overlay} />
         <View style={{ display: "flex", justifyContent: "center", alignItems: "left" }}>
@@ -16,10 +22,14 @@ export default function FamilyMain() {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-      <ImageBackground source={require("../assets/memories.png")} style={styles.topCard}>
+      
+
+      <ImageBackground source={require("../assets/memories.png")} style={styles.topCard} >
         <View style={styles.overlay} />
         <View style={{ display: "flex", justifyContent: "center", alignItems: "left" }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>{
+            navigation.navigate("memories")
+          }}>
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 60 }}>Memories</Text>
             <Text style={{ color: "white", fontWeight: 500, fontSize: 20, marginTop: 10 }}>Relive Beautiful Moments</Text>
             <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>
@@ -28,7 +38,9 @@ export default function FamilyMain() {
           </TouchableOpacity>
         </View>
       </ImageBackground>
+     
     </View>
+            </>
   );
 }
 
