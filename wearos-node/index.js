@@ -7,16 +7,25 @@ res.end('WebSocket server running');
 });
 
 const wss = new WebSocket.Server({ server });
+const clients = new Set();
 
 wss.on('connection', (ws) => {
 console.log('Client connected');
 
 ws.on('message', (message) => {
-console.log(`Received message: ${message}`);
+    clients.add(ws);
+    console.log(`Received message: ${message}`);
+    for (const client of clients) {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(`${message}`);
+        }
+    }
+    // ws.send(${message});
 });
 
 ws.on('close', () => {
-console.log('Client disconnected');
+    clients.delete(ws);
+    console.log('Client disconnected');
 });
 });
 

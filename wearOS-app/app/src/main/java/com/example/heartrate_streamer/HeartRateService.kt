@@ -38,7 +38,7 @@ class HeartRateService : Service(), SensorEventListener2 {
     private fun initWebSocket() {
         Log.i(null, "init")
         val request: Request = Request.Builder()
-            .url("ws://192.168.1.83:8080")
+            .url("ws://smart-watch-socket.onrender.com")
             .build()
         webSocket = client.newWebSocket(request, object : WebSocketListener() {
             override fun onOpen(webSocket: WebSocket, response: Response) {
