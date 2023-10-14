@@ -61,7 +61,7 @@ const OnboardingOne = () => {
 
  
   const handleNavigation = () => {
-    navigation.navigate("obfont");
+    navigation.navigate("Main");
   }
   return (
     <SafeAreaView style={styles.container}>

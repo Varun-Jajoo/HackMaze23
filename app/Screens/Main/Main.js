@@ -14,6 +14,7 @@ const Main = () => {
     <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0, justifyContent: "center", alignItems: "center" }}>
       <ScrollView style={{ display: "flex" }}>
         <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <Pressable style={{width:"85%",borderRadius:20,backgroundColor:"53dab8",height:"150"}}><Text style={{fontSize:30,fontWeight:"bold",textAlign:"left",marginBottom:20,width:"100%",borderRadius:20,backgroundColor:"#53dab8",height:"150",padding:40}}>Welcome Ramesh</Text></Pressable>
           {/* <ImageBackground source={require("../../assets/map.png")} style={styles.topCard}>
             <View style={styles.overlay} />
             <View style={{ display: "flex", justifyContent: "center", alignItems: "left" }}>

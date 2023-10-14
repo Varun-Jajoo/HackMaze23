@@ -1,11 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Main from './Main'
 
 export default function Education() {
   return (
     <View>
-      <Main/>
+      <Text>Education</Text>
     </View>
   )
 }

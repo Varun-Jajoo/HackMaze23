@@ -13,6 +13,9 @@ import axios from "axios";
 import { EvilIcons } from "@expo/vector-icons";
 
 const Profile = () => {
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
+  const [data, setData] = useState();
   const { user, setUser } = useUserContext();
   console.log("data" + user.id, user.data);
   const [selectedTab, setSelectedTab] = useState(true);
@@ -42,6 +45,37 @@ const Profile = () => {
 
     fetchData();
   }, []);
+
+  const options = {
+    method: "POST",
+    url: "https://api.edenai.run/v2/text/generation",
+    headers: {
+      authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2E0ODk0MjktZGIwMS00YzMyLTgwNmYtZmI3YzgyMzkzMWYzIiwidHlwZSI6ImFwaV90b2tlbiJ9.zb2xQc9BJybAGp0EX3fDuDjtvTB-_Uqe5NZ16wDW9Hg",
+    },
+    data: {
+      providers: "openai",
+      text: 
+         `give recommendation if i am 50-60 yrs old and i drink 1 liter of water and sleep 6 hrs and mood is happy in points of 1-2 lines`,
+       
+      temperature: 0.3,
+      max_tokens: 50,
+    },
+  };
+
+  const handleQuestionSubmit = async () => {
+    axios
+    .request(options)
+    .then((response) => {
+      console.log(response.data);
+      setData(response.data);
+      setAnswer(response.data.openai.generated_text)
+      // setRecommend(false)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  };
   return (
     <SafeAreaView style={{ backgroundColor: "white" }}>
       <View
@@ -282,10 +316,12 @@ const Profile = () => {
           </Text>
           {recommend ? (
             <>
-              <Pressable>
+              <Pressable onPress={handleQuestionSubmit} >
                 <Text>Recommend</Text>
               </Pressable>
-              <Text>Click above to get AI personalized</Text>
+              <Text>Click above to get AI personalized
+                {answer}
+              </Text>
             </>
           ) : (
             <>

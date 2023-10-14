@@ -66,10 +66,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   view: {
-    width: "45%", // Adjust to fit 2 views in one row
+    width: "45%",
     alignItems: "center",
     marginBottom: 20,
-    backgroundColor:"#fcba4f",// Set the view background color
+    backgroundColor:"#fcba4f",
     borderRadius: 15,
     padding: 10,
     elevation:20
