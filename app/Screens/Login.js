@@ -25,26 +25,17 @@ const LoginScreen = () => {
   const [firstName, setFirstName] = useState("");
 
   const handleLogin = async () => {
-    let headersList = {
-      Accept: "/",
-      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-      "Content-Type": "application/x-www-form-urlencoded",
-    };
+    
 
-    let bodyContent = `email=om@gmail.com&password=1234`;
+    let bodyContent = {"email":"om@gmail.com","password":"1234"};
 
-    let reqOptions = {
-      url: "https://log-b.vercel.app/api/signin/",
-      method: "POST",
-      headers: headersList,
-      data: bodyContent,
-    };
+    
 
     try {
-      let response = await axios.request(reqOptions);
-      // console.log(response.data);
+      let response = await axios.post('https://5c5b-103-137-94-219.ngrok-free.app/api/login/',bodyContent);
+      console.log(response.data);
       if (response.status === 200) {
-        setUser({ id: response.data.user.id, data: {} });
+        setUser({ id: response.data.user.id, data: response.data.user });
         navigation.replace("Main");
       } else {
         console.error("Response Status Code:", response.status);
@@ -53,6 +44,8 @@ const LoginScreen = () => {
     } catch (error) {
       console.error("Error2:", error);
     }
+    navigation.replace("Main");
+
   };
 
   const handleRegister = async () => {
@@ -74,6 +67,7 @@ const LoginScreen = () => {
     try {
       let response = await axios.request(reqOptions);
       console.log(response.data);
+
       if (response.status === 200) {
         setUser(response.data.user.id);
         console.log(response.data.user.id);
@@ -85,6 +79,7 @@ const LoginScreen = () => {
     } catch (error) {
       console.error("Error:", error);
     }
+
   };
 
   return (

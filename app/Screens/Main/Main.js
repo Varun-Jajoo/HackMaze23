@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TouchableOpacity, Image, ScrollView, ImageBackground, Platform } from "react-native";
 import { useUserContext } from "../../UserContext";
+import { useNavigation } from "@react-navigation/native";
+import * as Location from 'expo-location';
+import { useLocationContext } from "../../LocationContext";
 
 const Main = () => {
+  const {setLocation, location} = useLocationContext();
+  const [errorMsg, setErrorMsg] = useState(null);
+  useEffect(() => {
+    (async () => {
+      
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
   const cardData = [
-    { id: 1, title: "Exercise", image: require("../../assets/exercise.png"), backgroundColor:"#02cfee" },
-    { id: 2, title: "Medicine", image: require("../../assets/medicine.png"),backgroundColor:"#f67ea9"  },
-    { id: 3, title: "Problems", image: require("../../assets/problem.png"),backgroundColor:"#53dab8"  },
-    { id: 4, title: "Family", image: require("../../assets/family.png"),backgroundColor:"#f0a540"  },
-    { id: 5, title: "Parks Nearby", image: require("../../assets/family.png"),backgroundColor:"#02cfee"  },
-    { id: 6, title: "Doctor", image: require("../../assets/family.png"),backgroundColor:"#02cfee"  },
+    { id: 1, title: "Exercise", image: require("../../assets/exercise.png"), backgroundColor:"#02cfee",to:''},
+    { id: 2, title: "Medicine", image: require("../../assets/medicine.png"),backgroundColor:"#f67ea9",to:''  },
+    { id: 3, title: "Problems", image: require("../../assets/problem.png"),backgroundColor:"#53dab8",to:'problems'  },
+    { id: 4, title: "Family", image: require("../../assets/family.png"),backgroundColor:"#f0a540",to:'family'  },
+    { id: 5, title: "Parks Nearby", image: require("../../assets/family.png"),backgroundColor:"#02cfee",to:'Map'  },
+    { id: 6, title: "Doctor", image: require("../../assets/family.png"),backgroundColor:"#02cfee",to:''  },
   ]
+  const navigation = useNavigation();
+
   const {user} = useUserContext();
   return (
     <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0, justifyContent: "center", alignItems: "center" }}>
       <ScrollView style={{ display: "flex" }}>
         <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <Text className="mt-7 ml-6 font-normal text-[32px] mb-0 py-0">
-          Welcome, {user?.data?.user?.first_name?user?.data?.user?.first_name:"User!"}
+          Welcome, {user?.data?.first_name?user?.data?.first_name+"!":"User!"}
         </Text>
         
           {/* <ImageBackground source={require("../../assets/map.png")} style={styles.topCard}>
@@ -44,7 +64,7 @@ const Main = () => {
               }}
             >
               {cardData.map((card) => (
-                <View key={card.id} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <View key={card.id} style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
                   <Pressable
                     style={{
                       backgroundColor: card.backgroundColor,
@@ -54,6 +74,9 @@ const Main = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center"
+                    }}
+                    onPress={()=>{
+                      navigation.navigate(card.to)
                     }}
                   >
                     <Image source={card.image} style={{ width: 100, height: 100, marginTop: 20 }} />
