@@ -16,7 +16,9 @@ import OnboardingTwo from "./Screens/OnboardingTwo";
 import OnboardingFont from "./Screens/OnboardingFont";
 import Main from "./Screens/Main/Main";
 import Medicines from "./Screens/Medicines";
-
+import Maps from './Screens/Maps';
+import Problems from './Screens/Problems'
+import FamilyMain from './Screens/FamilyMain'
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
@@ -142,6 +144,21 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Med"
           component={Medicines}
+          options={{ headerShown: false }}
+        />
+            <Stack.Screen
+          name="problems"
+          component={Problems}
+          options={{ headerShown: false }}
+        />
+          <Stack.Screen
+          name="family"
+          component={FamilyMain}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Map"
+          component={Maps}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
