@@ -60,8 +60,8 @@ const Medicines = () => {
   const currentCardStyle = cardColors[cardColorIndex];
 
   return (
-    <SafeAreaView>
-      <Header/>
+    <>
+    <Header />
       <View
         style={{
           margin:"-20%",
@@ -70,7 +70,7 @@ const Medicines = () => {
           alignItems: "center",
           height: 800,
         }}
-      >
+        >
         <View
           style={{
             position: "relative",
@@ -80,7 +80,7 @@ const Medicines = () => {
             height: 230,
             width: 280,
           }}
-        >
+          >
           <View
             style={{
               display: "flex",
@@ -96,7 +96,7 @@ const Medicines = () => {
               top: 0,
               position: "absolute",
             }}
-          >
+            >
             <Text style={{ color: currentCardStyle.textColor, fontSize: 25, }}>
               {cards[cardIndex].title}
             </Text>
@@ -115,23 +115,23 @@ const Medicines = () => {
           </View>
           {[0, 1, 2].map((index) => (
             <View
-              key={index}
-              style={{
-                display: "flex",
-                backgroundColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
-                position: "absolute",
-                justifyContent: "center",
-                alignItems: "center",
-                height: 230,
-                width: 280,
-                borderWidth: 2,
-                borderColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
-                borderRadius: 30,
-                zIndex: 9 - index,
-                top: (index + 1) * 30,
-              }}
+            key={index}
+            style={{
+              display: "flex",
+              backgroundColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
+              position: "absolute",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 230,
+              width: 280,
+              borderWidth: 2,
+              borderColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
+              borderRadius: 30,
+              zIndex: 9 - index,
+              top: (index + 1) * 30,
+            }}
             />
-          ))}
+            ))}
         </View>
         
         {/* <TouchableOpacity
@@ -150,7 +150,8 @@ const Medicines = () => {
           <Text style={{color:'black',fontSize:25,fontWeight:"bold"}}>Medicine Taken</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    
+      </>
   );
 };
 
