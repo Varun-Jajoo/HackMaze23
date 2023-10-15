@@ -12,6 +12,7 @@ import { useUserContext } from "../UserContext";
 import axios from "axios";
 import { EvilIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Header from "../components/Header";
 
 
 const Profile = () => {
@@ -91,6 +92,8 @@ const Profile = () => {
           flexDirection: "column",
         }}
       >
+      {/* <Header style={{position:"absolute",top:0,left:0,bottom:0,right:0,zIndex:99}}/> */}
+
         <View
           style={{
             height: "51%",
