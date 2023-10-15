@@ -11,6 +11,8 @@ import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { useUserContext } from "../UserContext";
 import axios from "axios";
 import { EvilIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+
 
 const Profile = () => {
   const [question, setQuestion] = useState('');
@@ -20,6 +22,7 @@ const Profile = () => {
   console.log("data" + user.id, user.data);
   const [selectedTab, setSelectedTab] = useState(true);
   const [recommend, setRecommend] = useState(true);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,10 +79,14 @@ const Profile = () => {
       console.error(error);
     });
   };
+  const handlesubmit =()=>{
+    navigation.navigate("Map")
+  }
   return (
     <SafeAreaView style={{ backgroundColor: "white" }}>
       <View
         style={{
+          paddingTop:30,
           height: "100%",
           flexDirection: "column",
         }}
@@ -151,7 +158,7 @@ const Profile = () => {
                 alignItems: "center",
               }}
             >
-              <EvilIcons name="location" size={30} color="#f0fcfe" />
+              <EvilIcons name="location" size={30} color="#f0fcfe" onPress={handlesubmit}/>
             </View>
           </View>
           <View
@@ -410,7 +417,7 @@ const Profile = () => {
           style={{
             textAlign: "center",
             position: "absolute",
-            top: 107,
+            top: 127,
             right: "37.5%",
             fontSize: 80,
             color: "#5c93aa",

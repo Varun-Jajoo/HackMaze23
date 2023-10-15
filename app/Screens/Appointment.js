@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
 
-export default function Doctor() {
+export default function Appointment() {
   const [booked, setBooked] = useState(false);
 
   // Dummy list of doctors' information

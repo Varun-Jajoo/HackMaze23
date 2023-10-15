@@ -19,6 +19,7 @@ import Medicines from "./Screens/Medicines";
 import Maps from './Screens/Maps';
 import Problems from './Screens/Problems'
 import FamilyMain from './Screens/FamilyMain'
+import Doctor from "./Screens/Doctor";
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
@@ -126,6 +127,11 @@ const StackNavigator = () => {
           component={OnboardingFont}
           options={{ headerShown: false }}
         />
+         <Stack.Screen
+          name="Doc"
+          component={Doctor}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="ob2"
           component={OnboardingTwo}
@@ -164,6 +170,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="memories"
           component={Memories}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="Profile"
+          component={Profile}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from "react-native";
+import Header from "../components/Header";
 
 const Medicines = () => {
   const [cardIndex, setCardIndex] = useState(0);
@@ -60,6 +61,7 @@ const Medicines = () => {
 
   return (
     <SafeAreaView>
+      <Header/>
       <View
         style={{
           display: "flex",
@@ -131,20 +133,20 @@ const Medicines = () => {
           ))}
         </View>
         
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={handlePrevious}
           disabled={cardIndex === 0}
         >
-          <Text>Previously Taken</Text>
-        </TouchableOpacity>
+          <Text style={{color:'white',fontSize:25}}>Previously Taken</Text>
+        </TouchableOpacity> */}
         
         <TouchableOpacity
-          style={styles.button1}
+          style={styles.button}
           onPress={handleNext}
           disabled={cardIndex === cards.length - 1}
         >
-          <Text>Upcoming Medications</Text>
+          <Text style={{color:'black',fontSize:25,fontWeight:"bold"}}>Medicine Taken</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -154,16 +156,20 @@ const Medicines = () => {
 const styles = StyleSheet.create({
   button: {
     marginTop: 120,
-    padding: 10,
-    backgroundColor: "dodgerblue",
-    borderRadius: 5,
+    padding: 20,
+    backgroundColor: "#fcba4f",
+    borderRadius: 15,
+    color:'white'
   },
   button1: {
     marginTop: 20,
-    padding: 10,
+    padding: 20,
     backgroundColor: "dodgerblue",
     borderRadius: 5,
+    color:"white"
   },
 });
 
 export default Medicines;
+
+

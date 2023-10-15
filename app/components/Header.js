@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Pressable } from 'react-native'
+import { View, Text, SafeAreaView, Pressable ,Image} from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 const Header = ({home}) => {
@@ -11,7 +11,7 @@ const Header = ({home}) => {
 
                 <Pressable style={{backgroundColor:"#f67ea9",padding:2, width:60, height:60, borderRadius:100, display:"flex", justifyContent:'center', alignItems:'center'}} onPress={()=>{
                     navigation.goBack()
-                }}><Text style={{fontSize:32}}>{"<"}</Text></Pressable>
+                }}><Image source={require("../assets/Back.png")} style={{height:30,width:30}}/></Pressable>
                 )
             }
       </View>

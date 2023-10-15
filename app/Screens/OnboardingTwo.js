@@ -6,7 +6,7 @@ const OnboardingTwo = () => {
   const navigation = useNavigation();
 
   const handleNavigation = () => {
-    navigation.navigate("Login");
+    navigation.navigate("Main");
   }
 
   return (
