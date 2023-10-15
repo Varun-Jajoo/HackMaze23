@@ -32,7 +32,7 @@ const LoginScreen = () => {
     
 
     try {
-      let response = await axios.post('https://5c5b-103-137-94-219.ngrok-free.app/api/login/',bodyContent);
+      let response = await axios.post('https://d4f3-103-137-94-219.ngrok-free.app/api/login/',bodyContent);
       console.log(response.data);
       if (response.status === 200) {
         setUser({ id: response.data.user.id, data: response.data.user });

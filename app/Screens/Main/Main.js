@@ -4,6 +4,7 @@ import { useUserContext } from "../../UserContext";
 import { useNavigation } from "@react-navigation/native";
 import * as Location from 'expo-location';
 import { useLocationContext } from "../../LocationContext";
+import Header from "../../components/Header";
 
 const Main = () => {
   const { setLocation, location } = useLocationContext();
@@ -46,12 +47,9 @@ const Main = () => {
  }
   return (
     <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0, justifyContent: "center", alignItems: "center" }}>
-      <ScrollView style={{ display: "flex" }}>
-        <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <Text className="mt-7 ml-6 font-normal text-[32px] mb-0 py-0">
-          Welcome, {user?.data?.first_name?user?.data?.first_name+"!":"User!"}
-        </Text>
-        
+      <ScrollView>
+        <View>
+          <Header home={true} />
           {/* <ImageBackground source={require("../../assets/map.png")} style={styles.topCard}>
             <View style={styles.overlay} />
             <View style={{ display: "flex", justifyContent: "center", alignItems: "left" }}>
