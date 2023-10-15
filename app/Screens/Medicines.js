@@ -64,6 +64,7 @@ const Medicines = () => {
       <Header/>
       <View
         style={{
+          margin:"-20%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
