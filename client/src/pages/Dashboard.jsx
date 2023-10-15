@@ -3,10 +3,10 @@ import MainDash from '../components/Dashboard/MainDash/MainDash';
 import RightSide from '../components/Dashboard/RightSide/RightSide';
 import Sidebar from '../components/Sidebar';
 import ProfileHeader from '../components/ProfileHeader';
-
 import './Dashboard.css'
+import { useAuthContext } from '../hooks/useAuthContext';
 function Dashboard() {
-    
+   
     return ( 
         <div className='AppGlass2'>
             <Sidebar />

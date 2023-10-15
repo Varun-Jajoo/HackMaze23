@@ -4,6 +4,7 @@ import { useUserContext } from "../../UserContext";
 import { useNavigation } from "@react-navigation/native";
 import * as Location from 'expo-location';
 import { useLocationContext } from "../../LocationContext";
+import Header from "../../components/Header";
 
 const Main = () => {
   const {setLocation, location} = useLocationContext();
@@ -27,19 +28,17 @@ const Main = () => {
     { id: 2, title: "Medicine", image: require("../../assets/medicine.png"),backgroundColor:"#f67ea9",to:'Med'  },
     { id: 3, title: "Problems", image: require("../../assets/problem.png"),backgroundColor:"#53dab8",to:'problems'  },
     { id: 4, title: "Family", image: require("../../assets/family.png"),backgroundColor:"#f0a540",to:'family'  },
-    { id: 5, title: "Parks Nearby", image: require("../../assets/forest.png"),backgroundColor:"#02cfee",to:'Map'  },
+    { id: 5, title: "Parks Nearby", image: require("../../assets/forest.png"),backgroundColor:"#f67ea9",to:'Map'  },
     { id: 6, title: "Doctor", image: require("../../assets/doctor.png"),backgroundColor:"#02cfee",to:''  },
   ]
   const navigation = useNavigation();
 
   const {user} = useUserContext();
   return (
-    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0, justifyContent: "center", alignItems: "center" }}>
-      <ScrollView style={{ display: "flex" }}>
-        <View style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <Text className="mt-7 ml-6 font-normal text-[32px] mb-0 py-0">
-          Welcome, {user?.data?.first_name?user?.data?.first_name+"!":"User!"}
-        </Text>
+    <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? 40 : 0 }}>
+      <ScrollView>
+        <View>
+          <Header home={true}/>
         
           {/* <ImageBackground source={require("../../assets/map.png")} style={styles.topCard}>
             <View style={styles.overlay} />
@@ -53,7 +52,7 @@ const Main = () => {
               </TouchableOpacity>
             </View>
           </ImageBackground> */}
-          <View style={styles.rockbottom}>
+          <View style={[styles.rockbottom, {marginTop:10}]}>
             <View
               style={{
                 display: "flex",

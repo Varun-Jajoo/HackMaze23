@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from "react-native";
+import Header from "../components/Header";
 
 const Medicines = () => {
   const [cardIndex, setCardIndex] = useState(0);
@@ -59,7 +60,8 @@ const Medicines = () => {
   const currentCardStyle = cardColors[cardColorIndex];
 
   return (
-    <SafeAreaView>
+    <>
+    <Header />
       <View
         style={{
           display: "flex",
@@ -67,7 +69,7 @@ const Medicines = () => {
           alignItems: "center",
           height: 800,
         }}
-      >
+        >
         <View
           style={{
             position: "relative",
@@ -77,7 +79,7 @@ const Medicines = () => {
             height: 230,
             width: 280,
           }}
-        >
+          >
           <View
             style={{
               display: "flex",
@@ -93,7 +95,7 @@ const Medicines = () => {
               top: 0,
               position: "absolute",
             }}
-          >
+            >
             <Text style={{ color: currentCardStyle.textColor, fontSize: 25, }}>
               {cards[cardIndex].title}
             </Text>
@@ -112,30 +114,30 @@ const Medicines = () => {
           </View>
           {[0, 1, 2].map((index) => (
             <View
-              key={index}
-              style={{
-                display: "flex",
-                backgroundColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
-                position: "absolute",
-                justifyContent: "center",
-                alignItems: "center",
-                height: 230,
-                width: 280,
-                borderWidth: 2,
-                borderColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
-                borderRadius: 30,
-                zIndex: 9 - index,
-                top: (index + 1) * 30,
-              }}
+            key={index}
+            style={{
+              display: "flex",
+              backgroundColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
+              position: "absolute",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 230,
+              width: 280,
+              borderWidth: 2,
+              borderColor: cardColors[(cardColorIndex + index + 1) % cardColors.length].backgroundColor,
+              borderRadius: 30,
+              zIndex: 9 - index,
+              top: (index + 1) * 30,
+            }}
             />
-          ))}
+            ))}
         </View>
         
         <TouchableOpacity
           style={styles.button}
           onPress={handlePrevious}
           disabled={cardIndex === 0}
-        >
+          >
           <Text>Previously Taken</Text>
         </TouchableOpacity>
         
@@ -143,11 +145,12 @@ const Medicines = () => {
           style={styles.button1}
           onPress={handleNext}
           disabled={cardIndex === cards.length - 1}
-        >
+          >
           <Text>Upcoming Medications</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    
+      </>
   );
 };
 
