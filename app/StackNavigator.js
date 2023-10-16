@@ -5,9 +5,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Community from "./Screens/Community";
 import { NavigationContainer } from "@react-navigation/native";
 import Profile from "./Screens/Profile";
-import You from "./Screens/You";
-import Education from "./Screens/Education";
-import Family from "./Screens/Family";
 import Memories from "./Screens/Memories";
 import LoginScreen from "./Screens/Login";
 import SplashScreen from "./Screens/SplashScreen";
@@ -16,9 +13,9 @@ import OnboardingTwo from "./Screens/OnboardingTwo";
 import OnboardingFont from "./Screens/OnboardingFont";
 import Main from "./Screens/Main/Main";
 import Medicines from "./Screens/Medicines";
-import Maps from './Screens/Maps';
-import Problems from './Screens/Problems'
-import FamilyMain from './Screens/FamilyMain'
+import Maps from "./Screens/Maps";
+import Problems from "./Screens/Problems";
+import FamilyMain from "./Screens/FamilyMain";
 import Doctor from "./Screens/Doctor";
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -26,7 +23,6 @@ const StackNavigator = () => {
   const CustomTabBarButton = ({ children, onPress }) => (
     <TouchableOpacity
       style={{
-        top: -15,
         justifyContent: "center",
         alignItems: "center",
       }}
@@ -38,6 +34,7 @@ const StackNavigator = () => {
           height: 70,
           borderRadius: 35,
           backgroundColor: "#e32f45",
+          alignSelf: "center",
         }}
       >
         {children}
@@ -54,11 +51,11 @@ const StackNavigator = () => {
             backgroundColor: "white",
             borderRadius: 15,
             height: 90,
+            justifyContent: "center",
+            alignItems: "center",
           },
         }}
       >
-        
-        
         <Tab.Screen
           name="Education"
           component={Main}
@@ -76,36 +73,9 @@ const StackNavigator = () => {
                 }}
               />
             ),
-            tabBarButton: (props) => (
-              // Return the CustomTabBarButton component
-              <CustomTabBarButton {...props} />
-            ),
+            tabBarButton: (props) => <CustomTabBarButton {...props} />,
           }}
         />
-        <Tab.Screen
-          name="Voice"
-          component={Main}
-          options={{
-            tabBarLabel: "Education",
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-              <Image
-                source={require("./assets/splash.png")}
-                resizeMode="contain"
-                style={{
-                  width: 40,
-                  height: 40,
-                  tintColor: focused ? "white" : "white",
-                }}
-              />
-            ),
-            tabBarButton: (props) => (
-              // Return the CustomTabBarButton component
-              <CustomTabBarButton {...props} />
-            ),
-          }}
-        />
-        
       </Tab.Navigator>
     );
   };
@@ -127,7 +97,7 @@ const StackNavigator = () => {
           component={OnboardingFont}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Doc"
           component={Doctor}
           options={{ headerShown: false }}
@@ -152,12 +122,12 @@ const StackNavigator = () => {
           component={Medicines}
           options={{ headerShown: false }}
         />
-            <Stack.Screen
+        <Stack.Screen
           name="problems"
           component={Problems}
           options={{ headerShown: false }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="family"
           component={FamilyMain}
           options={{ headerShown: false }}
@@ -172,7 +142,7 @@ const StackNavigator = () => {
           component={Memories}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Profile"
           component={Profile}
           options={{ headerShown: false }}
