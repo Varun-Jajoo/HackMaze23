@@ -20,7 +20,7 @@ function useLogin() {
         alert(error.response.data.message);
         setIsLoading(false);
       });
-    const json = await response.data;
+    const json = await response?.data;
 
     if (json) {
       localStorage.setItem("user", JSON.stringify(json));
